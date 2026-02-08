@@ -1,5 +1,5 @@
 import java.util.*;
-class DijkstarAlgorithm {
+class DijkstraAlgorithm {
     public static class Pair implements Comparable<Pair>{
         int node,dist;
         Pair(int node,int dist){
