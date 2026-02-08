@@ -1,5 +1,5 @@
 import java.util.*;
-class SolufindEventualSafeStatestion {
+class findEventualSafeStates {
     // Reverse Graph Edges
     public static List<Integer> eventualSafeNodes(int[][] graph) {
         int n=graph.length;
