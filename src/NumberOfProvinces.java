@@ -1,5 +1,5 @@
 import java.util.*;
-class Solution {
+class NumberOfProvinces {
     // BFS
     public static int findCircleNum(int[][] isConnected) {
         int n=isConnected.length;
