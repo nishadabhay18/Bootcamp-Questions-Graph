@@ -1,34 +1,34 @@
 import java.util.*;
 class DirectedGraphCycle {
     // DFS
-//    public static boolean isCyclic(int V, int[][] edges) {
-//        List<List<Integer>> adj=new ArrayList<>();
-//        for(int i=0;i<V;i++) adj.add(new ArrayList<>());
-//        for(int[] edge:edges){
-//            adj.get(edge[0]).add(edge[1]);
-//        }
-//        boolean[] visited=new boolean[V];
-//        boolean[] path=new boolean[V];
-//        for(int i=0;i<V;i++){
-//            if(visited[i]==false){
-//                if(dfs(i,adj,visited,path)==true) return true;
-//            }
-//        }
-//        return false;
-//    }
-//    public static boolean dfs(int i, List<List<Integer>> adj, boolean[] visited, boolean[] path){
-//        visited[i]=true;
-//        path[i]=true;
-//        for(int ele:adj.get(i)){
-//            if(visited[ele]==false){
-//                if(dfs(ele,adj,visited,path)) return true;
-//            }else if(visited[ele]==true && path[ele]==true){ // part of that path.
-//                return true;
-//            }
-//        }
-//        path[i]=false;
-//        return false;
-//    }
+    public static boolean isCyclic(int V, int[][] edges) {
+        List<List<Integer>> adj=new ArrayList<>();
+        for(int i=0;i<V;i++) adj.add(new ArrayList<>());
+        for(int[] edge:edges){
+            adj.get(edge[0]).add(edge[1]);
+        }
+        boolean[] visited=new boolean[V];
+        boolean[] path=new boolean[V];
+        for(int i=0;i<V;i++){
+            if(visited[i]==false){
+                if(dfs(i,adj,visited,path)==true) return true;
+            }
+        }
+        return false;
+    }
+    public static boolean dfs(int i, List<List<Integer>> adj, boolean[] visited, boolean[] path){
+        visited[i]=true;
+        path[i]=true;
+        for(int ele:adj.get(i)){
+            if(visited[ele]==false){
+                if(dfs(ele,adj,visited,path)) return true;
+            }else if(visited[ele]==true && path[ele]==true){ // part of that path.
+                return true;
+            }
+        }
+        path[i]=false;
+        return false;
+    }
 
     // BFS Kahn's Algorithm
     public static boolean isCyclic(int V, int[][] edges){
