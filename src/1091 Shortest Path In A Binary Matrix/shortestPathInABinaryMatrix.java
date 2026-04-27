@@ -1,5 +1,5 @@
 class shortestPathInABinaryMatrix {
-    public static class Pair{
+    public static class Pair{ // Pair class
         int x,y;
         Pair(int x,int y){
             this.x=x;
