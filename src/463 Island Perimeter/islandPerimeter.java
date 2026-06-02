@@ -32,29 +32,25 @@ class islandPerimeter {
             if(col==0 || grid[row][col-1]==0) perimeter++;
             if(row==m-1 || grid[row+1][col]==0) perimeter++;
             if(col==n-1 || grid[row][col+1]==0) perimeter++;
-            // move right
-            if(col < n-1){
+            if(col < n-1){ // move right
                 if(isVisited[row][col+1] == false && grid[row][col+1] == 1){
                     q.add(new Pair(row, col+1));
                     isVisited[row][col+1] = true;
                 }
             }
-            // move bottom
-            if(row < m-1){
+            if(row < m-1){ // move bottom
                 if(isVisited[row+1][col] == false && grid[row+1][col] == 1){
                     q.add(new Pair(row+1, col));
                     isVisited[row+1][col] = true;
                 }
             }
-            // move left
-            if(col > 0){
+            if(col > 0){ // move left
                 if(isVisited[row][col-1] == false && grid[row][col-1] == 1){
                     q.add(new Pair(row, col-1));
                     isVisited[row][col-1] = true;
                 }
             }
-            // move top
-            if(row > 0){
+            if(row > 0){ // move top
                 if(isVisited[row-1][col] == false && grid[row-1][col] == 1){
                     q.add(new Pair(row-1, col));
                     isVisited[row-1][col] = true;
