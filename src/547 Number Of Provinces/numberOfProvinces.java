@@ -1,23 +1,23 @@
-class numberOfProvinces {
-    // By BFS
+class Solution {
+    // By BFS TC-> O(n*n) SC-> O(n)
     public int findCircleNum(int[][] isConnected) {
         int n=isConnected.length;
+        boolean[] isVisited=new boolean[n];
         int count=0;
-        boolean isVisited[]=new boolean[n];
         for(int i=0;i<n;i++){
             if(isVisited[i]==false){
-                bfs(isConnected,i,isVisited);
+                bfs(isConnected, i, isVisited);
                 count++;
             }
         }
         return count;
     }
-    public void bfs(int[][] isConnected, int i, boolean isVisited[]){
+    public void bfs(int[][] isConnected, int i, boolean[] isVisited){
         int n=isConnected.length;
         isVisited[i]=true;
-        Queue<Integer> q=new LinkedList<>();
+        Queue<Integer> q=new ArrayDeque<>();
         q.add(i);
-        while(q.size()>0){
+        while(q.size()!=0){
             int front=q.remove();
             for(int j=0;j<n;j++){
                 if(isConnected[front][j]==1 && isVisited[j]==false){
@@ -25,6 +25,27 @@ class numberOfProvinces {
                     isVisited[j]=true;
                 }
             }
+        }
+    }
+
+    // By DFS TC-> O(n*n) SC-> O(n) recursion space
+    public int findCircleNum(int[][] isConnected){
+        int n=isConnected.length;
+        boolean[] isVisited=new boolean[n];
+        int count=0;
+        for(int i=0;i<n;i++){
+            if(isVisited[i]==false){
+                dfs(isConnected, i, isVisited);
+                count++;
+            }
+        }
+        return count;
+    }
+    public void dfs(int[][] isConnected, int i, boolean[] isVisited){
+        int n=isConnected.length;
+        isVisited[i]=true;
+        for(int j=0;j<n;j++){
+            if(isConnected[i][j]==1 && isVisited[j]==false) dfs(isConnected, j, isVisited);
         }
     }
 
@@ -66,6 +87,6 @@ class numberOfProvinces {
     public int findParent(int curr){
         int pc=parent[curr];
         if(pc==curr) return curr;
-        return parent[curr]=findParent(pc);// make sure parent is pointing
+        return parent[curr]=findParent(pc);// make sure parent is pointing 
     }
 }
